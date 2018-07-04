@@ -1,6 +1,6 @@
 # encoding=utf8
 """
-校验敏感数据
+check sensitive data
 """
 import sys
 
@@ -23,12 +23,14 @@ clean_pattern = re.compile(r"""
 
 def check_sensitive_data(content):
     """
-    校验敏感数据
+    check sensitive data
     :param content:
     :return:
     """
     sensitive_items = []
+    # filter by character format
     for item in search_pattern.findall(content):
+        # check by regulars
         if clean_pattern.match(item):
             sensitive_items.append(item)
     if len(sensitive_items) > 0:
